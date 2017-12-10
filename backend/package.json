@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "start": "nodemon ./app.js"
+  },
+  "author": "rob elsner",
+  "license": "BSD",
+  "dependencies": {
+    "co-render": "^1.1.0",
+    "curry": "^1.2.0",
+    "ejs": "^2.5.7",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.3.0",
+    "koa-session2": "^2.2.5",
+    "koa2": "^2.0.0-alpha.7",
+    "lokijs": "^1.5.1",
+    "node-ses": "^2.1.0",
+    "nodemailer": "^4.4.1",
+    "swagger2-koa": "0.0.38",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^21.2.1",
+    "lolex": "^2.3.1",
+    "nodemon": "^1.12.1",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0"
+  },
+  "jest": {
+    "collectCoverage": true
+  }
+}

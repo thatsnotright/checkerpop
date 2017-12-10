@@ -1,0 +1,116 @@
+swagger: "2.0"
+info:
+  description: "Homework oh homework."
+  version: "1.0.0"
+  title: "Swagger Spec"
+  termsOfService: "http://swagger.io/terms/"
+host: "localhost:8080"
+basePath: "/api"
+tags:
+- name: "User"
+  description: "Everything about your Users"
+schemes:
+- "http"
+paths:
+  /user/{phoneNumber}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by phone number"
+      description: ""
+      operationId: "getUserByPhoneNumber"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "phoneNumber"
+        in: "path"
+        description: "The user that needs to be fetched. "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Invalid phone number supplied"
+        404:
+          description: "User not found"
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "Creates a new user."
+      operationId: "createUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "phoneNumber"
+        in: "path"
+        description: "Users phone number"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "new user object"
+        required: true
+        schema:
+          $ref: "#/definitions/NewUser"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Invalid phone supplied"
+definitions:
+  NewUser:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+        required: true
+      lastName:
+        type: "string"
+        required: true
+      email:
+        type: "string"
+        required: true
+  User:
+    type: "object"
+    properties:
+      phoneNumber:
+        type: "integer"
+        format: "uint32"
+        required: true
+      firstName:
+        type: "string"
+        required: true
+      lastName:
+        type: "string"
+        required: true
+      email:
+        type: "string"
+        required: true
+      checkins:
+        type: "integer"
+        required: true
+        format: "uint32"
+      points:
+        required: true
+        type: "integer"
+        format: "uint32"
+      lastCheckin:
+        required: true
+        type: "string"
+        format: "date-time"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
