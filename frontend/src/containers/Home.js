@@ -35,9 +35,13 @@ class Home extends Component {
   getUser(phoneNumber) {
     fetch(`/api/user/${phoneNumber}`)
     .then(async (response) => {
-      if (!response.ok || response.status === 404) {
-        this.setState({ needsRegistration: true, userValid: false });
-        return [false, undefined];
+      if (!response.ok) {
+        if (response.status === 404) {
+          this.setState({ needsRegistration: true, userValid: false });
+          return [false, undefined];
+        } else {
+          throw new Error(await response.text());
+        }
       }
       const body = await response.json();
       await sleep(2000);
@@ -48,9 +52,9 @@ class Home extends Component {
         user: body,
         loading: false
       });
-    }).catch(() => {
+    }).catch((e) => {
       this.setState({loading: false});
-      alert('Something went wrong!');
+      alert('Something went wrong!'+e.message);
     })
   }
 

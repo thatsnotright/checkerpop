@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --watchAll",
-    "start": "nodemon ./app.js"
+    "start": "node ./app.js",
+    "start-debug": "nodemon --debug ./app.js"
   },
   "author": "rob elsner",
   "license": "BSD",
@@ -38,5 +39,9 @@
   },
   "jest": {
     "collectCoverage": true
+  },
+  "nodemonConfig": {
+    "ignore": ["src/test/*", "tb.json"],
+    "delay": "2500"
   }
 }
